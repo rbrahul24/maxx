@@ -1,4 +1,5 @@
 #coding=utf-8
+#coding=utf-8
 try:
     import os,sys,time,json,random,re,string,platform,base64,uuid,requests
     from string import *
@@ -6,7 +7,7 @@ try:
     from concurrent.futures import ThreadPoolExecutor as ThreadPool
 except ModuleNotFoundError:
     os.system('pip install requests futures==2 > /dev/null')
-    os.system('python hop.py')
+    os.system('python maxx.py')
 try:
     os.mkdir('/sdcard/HOP')
 except:pass
@@ -111,7 +112,7 @@ def update():
         cv ='4.3' 
         x = requests.get('https://raw.githubusercontent.com/hop-prog/files/main/version.txt').text
         if str(cv) in str(x):
-            os.system('rm -rf h64 h32 && python hop.py')
+            os.system('rm -rf h64 h32 && python maxx.py')
         else:
             buy()
     except requests.exceptions.ConnectionError:
@@ -149,7 +150,7 @@ def set_ua():
             ua_app.append(line)
         geo_settings()
     else:
-        os.system('curl -L https://raw.githubusercontent.com/hop-prog/ua/main/androidx.txt > .android.txt && curl -L https://raw.githubusercontent.com/hop-prog/ua/main/ios.txt > .android.txt && curl -L https://raw.githubusercontent.com/hop-prog/ua/main/api.txt > .fb_app.txt && python hop.py')
+        os.system('curl -L https://raw.githubusercontent.com/hop-prog/ua/main/androidx.txt > .android.txt && curl -L https://raw.githubusercontent.com/hop-prog/ua/main/ios.txt > .android.txt && curl -L https://raw.githubusercontent.com/hop-prog/ua/main/api.txt > .fb_app.txt && python maxx.py')
 def geo_settings():
     try:
         x = requests.get('http://ip-api.com/json').text
@@ -739,7 +740,7 @@ def create_file_login():
         print(' Total ids: '+str(len(tc)))
         print(' File saved as: '+fs)
         input('\n Press enter to back ')
-        os.system('python hop.py')
+        os.system('python maxx.py')
     else:
         print(' Choose valid option ...')
         time.sleep(1)
@@ -757,7 +758,7 @@ def login():
         open("fb_cookies.txt","w").write(cookies)
         print(' Logged in successfully ...')
         time.sleep(1)
-        os.system('python hop.py')
+        os.system('python maxx.py')
     except KeyError:
         print('\n Inavlid cookies, try another cookies')
         exit()
